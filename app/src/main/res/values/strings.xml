@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">OneRead</string>
+
+    <string name="drawer_open">open</string>
+    <string name="drawer_closed">closed</string>
+    <string name="refresh">Обновить</string>
+    <string name="settings">Settings</string>
+</resources>
