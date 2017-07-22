@@ -7,7 +7,7 @@ import net.oneread.oneread.injection.component.ApplicationComponent
 import net.oneread.oneread.injection.module.ApplicationModule
 import net.oneread.oneread.injection.component.DaggerApplicationComponent
 
-open class OneApplication : Application() {
+open class OneReadApplication : Application() {
 
     lateinit var applicationComponent: ApplicationComponent
         private set
@@ -33,8 +33,8 @@ open class OneApplication : Application() {
     }
 
     companion object {
-        private lateinit var INSTANCE: OneApplication
-        fun getInstance(): OneApplication {
+        private lateinit var INSTANCE: OneReadApplication
+        fun getInstance(): OneReadApplication {
             return INSTANCE
         }
     }

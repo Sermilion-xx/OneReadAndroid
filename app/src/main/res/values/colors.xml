@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#262f3e</color>
-    <color name="colorPrimaryDark">#202122</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#00adf6</color>
+    <color name="colorPrimaryDark">#009cf6</color>
+    <color name="colorAccent">#639cff</color>
 
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorWhite70">#70ffffff</color>
-    <color name="colorBluePrimary">£639cff</color>
+    <color name="colorBluePrimary">#639cff</color>
+    
+    <color name="textColor1">#dd8c7979</color>
+    <color name="activityBackground">#ebeff1</color>
 
 </resources>

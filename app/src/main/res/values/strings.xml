@@ -5,4 +5,17 @@
     <string name="drawer_closed">closed</string>
     <string name="refresh">Обновить</string>
     <string name="settings">Settings</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="password_confirm">Confirm password</string>
+    <string name="next">Next</string>
+    <string name="back_to_login">Back To Login</string>
+    <string name="description_input_fields_errors">Describes input fields errors</string>
+    <string name="error_email">Invalid imail</string>
+    <string name="error_username">Invalid username</string>
+    <string name="error_password">Invalid passsword</string>
+    <string name="error_password_mismatch">Passwords do not match</string>
+    <string name="registration_success">You have successfully registred</string>
+    <string name="error_unknown">An unknown error occured</string>
 </resources>

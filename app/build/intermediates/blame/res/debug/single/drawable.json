@@ -60,6 +60,10 @@
         "source": "/Users/Sermilion/.android/build-cache/9be2a02c796215bc19e9c0f34b9d4b69a78e9995/output/res/drawable/abc_btn_check_material.xml"
     },
     {
+        "merged": "/Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/build/intermediates/res/merged/debug/drawable/seek_thumb.xml",
+        "source": "/Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/res/drawable/seek_thumb.xml"
+    },
+    {
         "merged": "/Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_dark.xml",
         "source": "/Users/Sermilion/.android/build-cache/9be2a02c796215bc19e9c0f34b9d4b69a78e9995/output/res/drawable/abc_list_selector_holo_dark.xml"
     },
@@ -74,6 +78,10 @@
     {
         "merged": "/Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/build/intermediates/res/merged/debug/drawable/notification_bg.xml",
         "source": "/Users/Sermilion/.android/build-cache/9be2a02c796215bc19e9c0f34b9d4b69a78e9995/output/res/drawable/notification_bg.xml"
+    },
+    {
+        "merged": "/Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/build/intermediates/res/merged/debug/drawable/rounded_button_background.xml",
+        "source": "/Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/res/drawable/rounded_button_background.xml"
     },
     {
         "merged": "/Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/build/intermediates/res/merged/debug/drawable/abc_vector_test.xml",

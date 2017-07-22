@@ -8,9 +8,9 @@ package com.tubb.smrv;
 
 public final class R {
     public static final class attr {
-        public static final int sml_auto_open_percent = 0x7f010113;
-        public static final int sml_scroller_duration = 0x7f010112;
-        public static final int sml_scroller_interpolator = 0x7f010114;
+        public static final int sml_auto_open_percent = 0x7f01013f;
+        public static final int sml_scroller_duration = 0x7f01013e;
+        public static final int sml_scroller_interpolator = 0x7f010140;
     }
     public static final class id {
         public static final int smContentView = 0x7f0d0009;
@@ -20,7 +20,7 @@ public final class R {
         public static final int smMenuViewTop = 0x7f0d000d;
     }
     public static final class styleable {
-        public static final int[] SwipeMenu = { 0x7f010112, 0x7f010113, 0x7f010114 };
+        public static final int[] SwipeMenu = { 0x7f01013e, 0x7f01013f, 0x7f010140 };
         public static final int SwipeMenu_sml_auto_open_percent = 1;
         public static final int SwipeMenu_sml_scroller_duration = 0;
         public static final int SwipeMenu_sml_scroller_interpolator = 2;

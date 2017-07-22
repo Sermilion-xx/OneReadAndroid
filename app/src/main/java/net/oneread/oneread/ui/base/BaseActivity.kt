@@ -14,9 +14,9 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ProgressBar
 import butterknife.BindView
-import net.oneread.oneread.OneApplication
 import com.oila.oneaccount.ui.navdrawer.DrawerAdapter
 import com.oila.oneaccount.ui.navdrawer.getDrawerItems
+import net.oneread.oneread.OneReadApplication
 import net.oneread.oneread.R
 import net.oneread.oneread.data.model.DrawerItem
 import net.oneread.oneread.injection.component.ActivityComponent
@@ -36,9 +36,9 @@ open class BaseActivity : AppCompatActivity() {
         @JvmStatic private val componentsMap = HashMap<Long, ConfigPersistentComponent>()
     }
 
-//    @BindView(R.id.progressBar) @Nullable
+    @BindView(R.id.progressBar) @Nullable
     lateinit var mProgress: ProgressBar
-//    @BindView(R.id.toolbar) @Nullable
+    @BindView(R.id.toolbar) @Nullable
     lateinit var mToolbar: Toolbar
     @BindView(R.id.drawer_layout) @Nullable
     lateinit var mDrawer: DrawerLayout
@@ -60,7 +60,7 @@ open class BaseActivity : AppCompatActivity() {
     private fun initDI(savedInstanceState: Bundle?) {
         activityId = savedInstanceState?.getLong(KEY_ACTIVITY_ID) ?: NEXT_ID.getAndIncrement()
         val configPersistentComponent = componentsMap.getOrPut(activityId, {
-            val component = (applicationContext as OneApplication).applicationComponent
+            val component = (applicationContext as OneReadApplication).applicationComponent
 
             DaggerConfigPersistentComponent.builder()
                     //depends on ApplicationComponent, so set it

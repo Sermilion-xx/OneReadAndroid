@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="regLogMarginSidesSmall">70dp</dimen>
+    <dimen name="regLogMarginSidesNormal">90dp</dimen>
+    <dimen name="regLogMarginTop">25dp</dimen>
+</resources>

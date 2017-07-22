@@ -8,6 +8,8 @@
         android:minSdkVersion="17"
         android:targetSdkVersion="26" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <meta-data
         android:name="android.support.VERSION"
         android:value="26.0.0-alpha1" /> <!-- To store the heap dumps and leak analysis results. -->
@@ -16,12 +18,21 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name="net.oneread.oneread.OneReadApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="net.oneread.oneread.ui.registration.RegActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <service
             android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
             android:enabled="false"

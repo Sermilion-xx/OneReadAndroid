@@ -5,7 +5,9 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ProgressBar;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
 import java.lang.IllegalStateException;
@@ -23,8 +25,10 @@ public class BaseActivity_ViewBinding implements Unbinder {
   public BaseActivity_ViewBinding(BaseActivity target, View source) {
     this.target = target;
 
-    target.mDrawer = Utils.findOptionalViewAsType(source, 2131558522, "field 'mDrawer'", DrawerLayout.class);
-    target.navigationView = Utils.findOptionalViewAsType(source, 2131558524, "field 'navigationView'", NavigationView.class);
+    target.mProgress = Utils.findOptionalViewAsType(source, 2131558533, "field 'mProgress'", ProgressBar.class);
+    target.mToolbar = Utils.findOptionalViewAsType(source, 2131558589, "field 'mToolbar'", Toolbar.class);
+    target.mDrawer = Utils.findOptionalViewAsType(source, 2131558529, "field 'mDrawer'", DrawerLayout.class);
+    target.navigationView = Utils.findOptionalViewAsType(source, 2131558531, "field 'navigationView'", NavigationView.class);
   }
 
   @Override
@@ -34,6 +38,8 @@ public class BaseActivity_ViewBinding implements Unbinder {
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
     this.target = null;
 
+    target.mProgress = null;
+    target.mToolbar = null;
     target.mDrawer = null;
     target.navigationView = null;
   }
