@@ -1,7 +1,9 @@
 package net.oneread.oneread.ui.registration
 
 import android.content.Context
+import android.widget.EditText
 import com.google.gson.Gson
+import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import net.oneread.oneread.R
@@ -11,6 +13,8 @@ import net.oneread.oneread.injection.ApplicationContext
 import net.oneread.oneread.injection.ConfigPersistent
 import retrofit2.HttpException
 import rx.Subscription
+import java.util.concurrent.TimeUnit
+import java.util.function.Consumer
 import javax.inject.Inject
 
 /**
@@ -18,7 +22,7 @@ import javax.inject.Inject
  * Created by Sermilion on 22/07/2017.
  * Project: OneRead
  * ---------------------------------------------------
- * <a href="http://www.ucomplex.org">www.ucomplex.org</a>
+ * <a href="http://www.ucomplex.org">www.oneread.net</a>
  * <a href="http://www.github.com/sermilion>github</a>
  * ---------------------------------------------------
  */
@@ -39,8 +43,7 @@ constructor(private val dataManager: DataManager, @ApplicationContext private va
                           password: String,
                           passwordAgain: String,
                           ilang: String) {
-        val errors = validateInput(username, email, password, passwordAgain)
-        if (errors.isEmpty()) {
+
             dataManager.register(username = username,
                     email = email,
                     password = password,
@@ -71,41 +74,17 @@ constructor(private val dataManager: DataManager, @ApplicationContext private va
                             view.hideProgress()
                         }
                     })
-        } else {
-            view.showValidationErrors(errors)
-        }
     }
 
-    private fun validateInput(username: String,
-                              email: String,
-                              password: String,
-                              passwordAgain: String): List<ValidationError> {
-
-        val errors = mutableListOf<ValidationError>()
-
-        if (!validateEmail(email)) {
-            errors.add(ValidationError.EMAIL)
-        }
-        if (password != passwordAgain) {
-            errors.add(ValidationError.PASSWORD_MISMATCH)
-        } else if (passwordAgain.isEmpty()) {
-            errors.add(ValidationError.PASSWORD)
-        }
-        if (!validatePassword(password)) {
-            errors.add(ValidationError.PASSWORD)
-        }
-        if (username.isEmpty() && username.length < 3 && username.length > 20) {
-            errors.add(ValidationError.USERNAME)
-        }
-        return errors
-    }
-
-    private fun validateEmail(email: String)
+    fun validateEmail(email: String)
             = email.contains("@")
             && email.contains(".")
             && email.length > 5
 
-    private fun validatePassword(password: String)
+    fun validatePassword(password: String)
             = password.matches(Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+\$"))
+
+
+
 
 }

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:2:1-24:12
+ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:2:1-25:12
 	package
 		ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:3:5-34
 		INJECTED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml
@@ -18,7 +18,7 @@ ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/In
 	android:name
 		ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:7:5-22:19
+ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:7:5-23:19
 MERGED from [com.android.support:cardview-v7:26.0.0-alpha1] /Users/Sermilion/.android/build-cache/e86b0c3df1e76bb048e9cd3e8efc339c12c6545f/output/AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:design:26.0.0-alpha1] /Users/Sermilion/.android/build-cache/fcba00c0149e7f1efe2a9b8bf0ca152398b83994/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:transition:26.0.0-alpha1] /Users/Sermilion/.android/build-cache/42f23eaecbda1e8cc925c2b1dbb5d3aec6225e02/output/AndroidManifest.xml:26:5-20
@@ -38,19 +38,19 @@ MERGED from [com.tubb.smrv:swipemenu-recyclerview:5.4.0] /Users/Sermilion/.andro
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/Sermilion/.android/build-cache/3af95422e520e0796e329baa7592de74f8fb1cb4/output/AndroidManifest.xml:9:5-20
 MERGED from [com.squareup.leakcanary:leakcanary-android:1.5] /Users/Sermilion/.android/build-cache/30aefc6bf1bbcb36504ec87cd70fa19f14ebb8d9/output/AndroidManifest.xml:28:5-57:19
 	android:label
-		ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:10:9-41
+		ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:11:9-41
 	android:supportsRtl
 		ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:13:9-35
 	android:roundIcon
 		ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:12:9-54
 	android:allowBackup
-		ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:8:9-35
+		ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:9:9-35
 	android:icon
-		ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:9:9-43
+		ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:10:9-43
 	android:theme
 		ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:14:9-40
 	android:name
-		ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:11:9-43
+		ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:8:9-43
 activity#net.oneread.oneread.ui.registration.RegActivity
 ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:15:9-21:20
 	android:name
@@ -65,6 +65,10 @@ category#android.intent.category.LAUNCHER
 ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:19:17-77
 	android:name
 		ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:19:27-74
+activity#net.oneread.oneread.ui.login.LoginActivity
+ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:22:9-69
+	android:name
+		ADDED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:22:19-57
 uses-sdk
 INJECTED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:cardview-v7:26.0.0-alpha1] /Users/Sermilion/.android/build-cache/e86b0c3df1e76bb048e9cd3e8efc339c12c6545f/output/AndroidManifest.xml:20:5-44
@@ -72,6 +76,8 @@ MERGED from [com.android.support:design:26.0.0-alpha1] /Users/Sermilion/.android
 MERGED from [com.android.support:recyclerview-v7:26.0.0-alpha1] /Users/Sermilion/.android/build-cache/05ff492305cd48e0299f70a91cb54b76199d0de9/output/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:transition:26.0.0-alpha1] /Users/Sermilion/.android/build-cache/42f23eaecbda1e8cc925c2b1dbb5d3aec6225e02/output/AndroidManifest.xml:20:5-44
 MERGED from [com.jakewharton:butterknife:8.5.1] /Users/Sermilion/.android/build-cache/f06fea155caad58d5c07f834dead5018ccf45615/output/AndroidManifest.xml:5:5-43
+MERGED from [com.jakewharton.rxbinding2:rxbinding-kotlin:2.0.0] /Users/Sermilion/.android/build-cache/2a94b8e540897289fc70c85290e4a11c11c51f98/output/AndroidManifest.xml:6:5-44
+MERGED from [com.jakewharton.rxbinding2:rxbinding:2.0.0] /Users/Sermilion/.android/build-cache/150523c0871b408f58604423187df469d26cfe05/output/AndroidManifest.xml:6:5-44
 MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/Sermilion/.android/build-cache/27d850dbc60684def6ed3e9cf8c4cf4357657726/output/AndroidManifest.xml:19:5-43
 MERGED from [com.jakewharton.timber:timber:4.4.0] /Users/Sermilion/.android/build-cache/0ca5ea4bf10161aaa801565e623e094fa6bb4448/output/AndroidManifest.xml:6:5-43
 MERGED from [io.reactivex:rxandroid:1.2.1] /Users/Sermilion/.android/build-cache/41eaf27863617b45b8733d946bb25d91f277d14b/output/AndroidManifest.xml:19:5-43
@@ -118,7 +124,7 @@ MERGED from [com.android.support:support-compat:26.0.0-alpha1] /Users/Sermilion/
 		ADDED from [com.android.support:cardview-v7:26.0.0-alpha1] /Users/Sermilion/.android/build-cache/e86b0c3df1e76bb048e9cd3e8efc339c12c6545f/output/AndroidManifest.xml:23:9-47
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from [com.squareup.leakcanary:leakcanary-android:1.5] /Users/Sermilion/.android/build-cache/30aefc6bf1bbcb36504ec87cd70fa19f14ebb8d9/output/AndroidManifest.xml:25:5-80
-IMPLIED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:2:1-24:12 reason: com.squareup.leakcanary requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/src/main/AndroidManifest.xml:2:1-25:12 reason: com.squareup.leakcanary requested WRITE_EXTERNAL_STORAGE
 	android:name
 		ADDED from [com.squareup.leakcanary:leakcanary-android:1.5] /Users/Sermilion/.android/build-cache/30aefc6bf1bbcb36504ec87cd70fa19f14ebb8d9/output/AndroidManifest.xml:25:22-77
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE

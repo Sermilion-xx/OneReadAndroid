@@ -18,7 +18,6 @@ object RegContract {
     interface View: MvpView {
         fun onRegistrationSuccess()
         fun showFail(error: String)
-        fun showValidationErrors(errors: List<ValidationError>)
         fun showProgress()
         fun hideProgress()
     }
@@ -34,7 +33,4 @@ object RegContract {
 
 }
 
-enum class ValidationError {
-    EMAIL, PASSWORD, PASSWORD_MISMATCH, USERNAME
-}
 

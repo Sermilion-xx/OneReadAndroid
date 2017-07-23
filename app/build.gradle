@@ -120,6 +120,7 @@ dependencies {
 
     compile "io.reactivex.rxjava2:rxandroid:$RXJAVA_VERSION"
     compile "io.reactivex.rxjava2:rxjava:$RXJAVA_VERSION"
+    compile 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.0.0'
 
     // Unit tests dependencies
     testCompile jUnit

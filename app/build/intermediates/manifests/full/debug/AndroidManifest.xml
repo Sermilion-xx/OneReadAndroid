@@ -32,6 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="net.oneread.oneread.ui.login.LoginActivity" />
 
         <service
             android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
