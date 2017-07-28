@@ -4,11 +4,11 @@ package net.oneread.oneread.ui.base;
 public class BaseActivity extends android.support.v7.app.AppCompatActivity {
     @org.jetbrains.annotations.NotNull()
     @android.support.annotation.Nullable()
-    @butterknife.BindView(value = 2131558533)
+    @butterknife.BindView(value = 2131558541)
     public android.widget.ProgressBar mProgress;
     @org.jetbrains.annotations.NotNull()
     @android.support.annotation.Nullable()
-    @butterknife.BindView(value = 2131558589)
+    @butterknife.BindView(value = 2131558591)
     public android.support.v7.widget.Toolbar mToolbar;
     @org.jetbrains.annotations.NotNull()
     @android.support.annotation.Nullable()

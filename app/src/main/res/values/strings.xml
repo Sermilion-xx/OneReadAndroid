@@ -17,5 +17,8 @@
     <string name="error_password">Invalid passsword</string>
     <string name="error_password_mismatch">Passwords do not match</string>
     <string name="registration_success">You have successfully registred</string>
-    <string name="error_unknown">An unknown error occured</string>
+    <string name="error_unknown">An unknown error occurred</string>
+    <string name="login">Login</string>
+    <string name="new_user_q">New user?</string>
+    <string name="forgot_password_q">Forgot password?</string>
 </resources>

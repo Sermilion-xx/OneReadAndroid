@@ -7,10 +7,6 @@
     android:orientation="vertical"
     tools:context="net.oneread.oneread.ui.registration.RegActivity">
 
-    <include
-        android:id="@+id/progressBar"
-        layout="@layout/progress_bar" />
-
     <FrameLayout
         android:id="@+id/footer_top"
         android:layout_width="match_parent"
@@ -83,14 +79,8 @@
             android:inputType="textPassword"
             app:backgroundTint="@color/colorAccent" />
 
-        <FrameLayout
-            android:layout_width="125dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/regLogMarginTop"
-            android:clickable="true"
-            android:background="@drawable/rounded_button_background">
-
             <Button
+                android:layout_marginTop="@dimen/regLogMarginTop"
                 android:id="@+id/reg_next"
                 android:layout_width="125dp"
                 android:layout_height="40dp"
@@ -99,9 +89,8 @@
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:background="@drawable/rounded_button_background"/>
+                android:background="@drawable/btn_round_white_blue_background"/>
 
-        </FrameLayout>
 
     </LinearLayout>
 
@@ -126,10 +115,15 @@
             android:textAllCaps="false"
             android:paddingEnd="5dp"
             android:paddingStart="5dp"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:text="@string/back_to_login"
             android:textColor="@color/colorWhite"
             android:textSize="14sp" />
 
     </RelativeLayout>
+
+    <include
+        android:id="@+id/progressBar"
+        layout="@layout/progress_bar" />
 
 </RelativeLayout>

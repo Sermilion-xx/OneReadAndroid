@@ -2,6 +2,7 @@ package net.oneread.oneread.injection.component;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import dagger.internal.DoubleCheck;
 import dagger.internal.Preconditions;
@@ -18,6 +19,7 @@ import net.oneread.oneread.injection.module.ApplicationModule;
 import net.oneread.oneread.injection.module.ApplicationModule_ProvideApplication$app_debugFactory;
 import net.oneread.oneread.injection.module.ApplicationModule_ProvideContext$app_debugFactory;
 import net.oneread.oneread.injection.module.DataModule;
+import net.oneread.oneread.injection.module.DataModule_ProvideSharedPreferencesFactory;
 import okhttp3.OkHttpClient;
 
 @Generated(
@@ -36,6 +38,8 @@ public final class DaggerApplicationComponent implements ApplicationComponent {
   private Provider<OneReadService> provideOneAccountServiceProvider;
 
   private Provider<DataManager> dataManagerProvider;
+
+  private Provider<SharedPreferences> provideSharedPreferencesProvider;
 
   private DaggerApplicationComponent(Builder builder) {
     assert builder != null;
@@ -71,6 +75,11 @@ public final class DaggerApplicationComponent implements ApplicationComponent {
 
     this.dataManagerProvider =
         DoubleCheck.provider(DataManager_Factory.create(provideOneAccountServiceProvider));
+
+    this.provideSharedPreferencesProvider =
+        DoubleCheck.provider(
+            DataModule_ProvideSharedPreferencesFactory.create(
+                builder.dataModule, provideApplication$app_debugProvider));
   }
 
   @Override
@@ -93,10 +102,17 @@ public final class DaggerApplicationComponent implements ApplicationComponent {
     return dataManagerProvider.get();
   }
 
+  @Override
+  public SharedPreferences sharedPreferences() {
+    return provideSharedPreferencesProvider.get();
+  }
+
   public static final class Builder {
     private ApplicationModule applicationModule;
 
     private ApiModule apiModule;
+
+    private DataModule dataModule;
 
     private Builder() {}
 
@@ -108,6 +124,9 @@ public final class DaggerApplicationComponent implements ApplicationComponent {
       if (apiModule == null) {
         this.apiModule = new ApiModule();
       }
+      if (dataModule == null) {
+        this.dataModule = new DataModule();
+      }
       return new DaggerApplicationComponent(this);
     }
 
@@ -116,13 +135,8 @@ public final class DaggerApplicationComponent implements ApplicationComponent {
       return this;
     }
 
-    /**
-     * @deprecated This module is declared, but an instance is not used in the component. This
-     *     method is a no-op. For more, see https://google.github.io/dagger/unused-modules.
-     */
-    @Deprecated
     public Builder dataModule(DataModule dataModule) {
-      Preconditions.checkNotNull(dataModule);
+      this.dataModule = Preconditions.checkNotNull(dataModule);
       return this;
     }
 

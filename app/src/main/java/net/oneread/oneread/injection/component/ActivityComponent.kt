@@ -3,6 +3,7 @@ package net.oneread.oneread.injection.component
 import net.oneread.oneread.injection.module.ActivityModule
 import dagger.Subcomponent
 import net.oneread.oneread.injection.PerActivity
+import net.oneread.oneread.ui.login.LoginActivity
 import net.oneread.oneread.ui.registration.RegActivity
 
 /**
@@ -12,4 +13,5 @@ import net.oneread.oneread.ui.registration.RegActivity
 @Subcomponent(modules = arrayOf(ActivityModule::class))
 interface ActivityComponent {
     fun inject(regActivity: RegActivity)
+    fun inject(loginActivity: LoginActivity)
 }

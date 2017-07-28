@@ -1,6 +1,7 @@
 package net.oneread.oneread.injection.component;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import dagger.MembersInjector;
 import dagger.internal.DoubleCheck;
 import dagger.internal.Factory;
@@ -10,6 +11,10 @@ import javax.annotation.Generated;
 import javax.inject.Provider;
 import net.oneread.oneread.data.DataManager;
 import net.oneread.oneread.injection.module.ActivityModule;
+import net.oneread.oneread.ui.login.LoginActivity;
+import net.oneread.oneread.ui.login.LoginActivity_MembersInjector;
+import net.oneread.oneread.ui.login.LoginPresenter;
+import net.oneread.oneread.ui.login.LoginPresenter_Factory;
 import net.oneread.oneread.ui.registration.RegActivity;
 import net.oneread.oneread.ui.registration.RegActivity_MembersInjector;
 import net.oneread.oneread.ui.registration.RegPresenter;
@@ -25,6 +30,10 @@ public final class DaggerConfigPersistentComponent implements ConfigPersistentCo
   private Provider<Context> contextProvider;
 
   private Provider<RegPresenter> regPresenterProvider;
+
+  private Provider<SharedPreferences> sharedPreferencesProvider;
+
+  private Provider<LoginPresenter> loginPresenterProvider;
 
   private DaggerConfigPersistentComponent(Builder builder) {
     assert builder != null;
@@ -66,6 +75,25 @@ public final class DaggerConfigPersistentComponent implements ConfigPersistentCo
         DoubleCheck.provider(
             RegPresenter_Factory.create(
                 MembersInjectors.<RegPresenter>noOp(), dataManagerProvider, contextProvider));
+
+    this.sharedPreferencesProvider =
+        new Factory<SharedPreferences>() {
+          private final ApplicationComponent applicationComponent = builder.applicationComponent;
+
+          @Override
+          public SharedPreferences get() {
+            return Preconditions.checkNotNull(
+                applicationComponent.sharedPreferences(),
+                "Cannot return null from a non-@Nullable component method");
+          }
+        };
+
+    this.loginPresenterProvider =
+        DoubleCheck.provider(
+            LoginPresenter_Factory.create(
+                MembersInjectors.<LoginPresenter>noOp(),
+                dataManagerProvider,
+                sharedPreferencesProvider));
   }
 
   @Override
@@ -97,6 +125,8 @@ public final class DaggerConfigPersistentComponent implements ConfigPersistentCo
 
     private MembersInjector<RegActivity> regActivityMembersInjector;
 
+    private MembersInjector<LoginActivity> loginActivityMembersInjector;
+
     private ActivityComponentImpl(ActivityModule activityModule) {
       this.activityModule = Preconditions.checkNotNull(activityModule);
       initialize();
@@ -108,11 +138,20 @@ public final class DaggerConfigPersistentComponent implements ConfigPersistentCo
       this.regActivityMembersInjector =
           RegActivity_MembersInjector.create(
               DaggerConfigPersistentComponent.this.regPresenterProvider);
+
+      this.loginActivityMembersInjector =
+          LoginActivity_MembersInjector.create(
+              DaggerConfigPersistentComponent.this.loginPresenterProvider);
     }
 
     @Override
     public void inject(RegActivity regActivity) {
       regActivityMembersInjector.injectMembers(regActivity);
+    }
+
+    @Override
+    public void inject(LoginActivity loginActivity) {
+      loginActivityMembersInjector.injectMembers(loginActivity);
     }
   }
 }

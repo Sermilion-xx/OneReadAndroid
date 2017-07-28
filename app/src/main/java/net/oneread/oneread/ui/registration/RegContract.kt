@@ -16,7 +16,7 @@ import net.oneread.oneread.ui.base.MvpView
 object RegContract {
 
     interface View: MvpView {
-        fun onRegistrationSuccess()
+        fun showSuccess()
         fun showFail(error: String)
         fun showProgress()
         fun hideProgress()

@@ -25,8 +25,8 @@ public class BaseActivity_ViewBinding implements Unbinder {
   public BaseActivity_ViewBinding(BaseActivity target, View source) {
     this.target = target;
 
-    target.mProgress = Utils.findOptionalViewAsType(source, 2131558533, "field 'mProgress'", ProgressBar.class);
-    target.mToolbar = Utils.findOptionalViewAsType(source, 2131558589, "field 'mToolbar'", Toolbar.class);
+    target.mProgress = Utils.findOptionalViewAsType(source, 2131558541, "field 'mProgress'", ProgressBar.class);
+    target.mToolbar = Utils.findOptionalViewAsType(source, 2131558591, "field 'mToolbar'", Toolbar.class);
     target.mDrawer = Utils.findOptionalViewAsType(source, 2131558529, "field 'mDrawer'", DrawerLayout.class);
     target.navigationView = Utils.findOptionalViewAsType(source, 2131558531, "field 'navigationView'", NavigationView.class);
   }

@@ -14,6 +14,6 @@ class DataModule {
     @Provides
     @Singleton
     fun provideSharedPreferences(app: Application): SharedPreferences {
-        return app.getSharedPreferences("mItems", MODE_PRIVATE)
+        return app.getSharedPreferences("OneRead", MODE_PRIVATE)
     }
 }

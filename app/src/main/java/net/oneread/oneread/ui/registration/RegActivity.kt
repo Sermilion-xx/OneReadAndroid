@@ -1,5 +1,7 @@
 package net.oneread.oneread.ui.registration
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -11,6 +13,9 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.disposables.CompositeDisposable
 import net.oneread.oneread.R
 import net.oneread.oneread.ui.base.BaseActivity
+import net.oneread.oneread.ui.login.LoginActivity
+import net.oneread.oneread.util.extension.validateEmail
+import net.oneread.oneread.util.extension.validatePassword
 import org.jetbrains.anko.toast
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -48,12 +53,12 @@ class RegActivity : BaseActivity(), RegContract.View {
                 }.sample(1, TimeUnit.SECONDS).subscribe(),
 
                 RxTextView.textChanges(vEmail).skip(1).doOnNext {
-                    if (!presenter.validateEmail(vEmail.text.toString()))
+                    if (!validateEmail(vEmail.text.toString()))
                         vEmail.error = getString(R.string.error_email)
                 }.sample(1, TimeUnit.SECONDS).subscribe(),
 
                 RxTextView.textChanges(vPassword).skip(1).doOnNext {
-                    if (!presenter.validatePassword(vPassword.text.toString()))
+                    if (!validatePassword(vPassword.text.toString()))
                         vPassword.error = getString(R.string.error_password)
                 }.sample(1, TimeUnit.SECONDS).subscribe(),
 
@@ -64,28 +69,32 @@ class RegActivity : BaseActivity(), RegContract.View {
         )
     }
 
+    private fun inputNoErrors() = vUsername.error == null && vEmail.error == null
+            && vPassword.error == null && vPasswordAgain.error == null
+
+    private fun inputNotEmpty() = vUsername.text.isNotEmpty()  && vEmail.text.isNotEmpty()
+            && vPassword.text.isNotEmpty() && vPasswordAgain.text.isNotEmpty()
+
+
     @OnClick(R.id.reg_next, R.id.login)
     fun handleClicks(view: View) {
         when (view.id) {
             R.id.reg_next -> {
-                if (vUsername.error != null && vEmail.error!= null
-                        && vPassword.error!= null && vPasswordAgain.error!= null) {
-
+                if (inputNoErrors() && inputNotEmpty()) {
                     presenter.register(vUsername.text.toString(),
                             vEmail.text.toString(),
                             vPassword.text.toString(),
                             vPasswordAgain.text.toString(),
                             Locale.getDefault().language)
                 }
-
             }
             R.id.login -> {
-                //TODO: go back to login activity
+                startActivity(LoginActivity.createIntent(this))
             }
         }
     }
 
-    override fun onRegistrationSuccess() {
+    override fun showSuccess() {
         toast(R.string.registration_success)
     }
 
@@ -97,5 +106,11 @@ class RegActivity : BaseActivity(), RegContract.View {
         super.onDestroy()
         presenter.detachView()
         textChangeCompositeDisposables.dispose()
+    }
+
+    companion object {
+        fun createIntent(context: Context): Intent {
+            return Intent(context, RegActivity::class.java)
+        }
     }
 }

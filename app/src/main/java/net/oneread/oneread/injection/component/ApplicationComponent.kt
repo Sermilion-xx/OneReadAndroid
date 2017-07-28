@@ -2,6 +2,7 @@ package net.oneread.oneread.injection.component
 
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
 import net.oneread.oneread.injection.module.ApplicationModule
 import net.oneread.oneread.injection.module.DataModule
 import dagger.Component
@@ -19,4 +20,5 @@ interface ApplicationComponent {
     fun application(): Application
     fun oneAccountService(): OneReadService
     fun dataManager(): DataManager
+    fun sharedPreferences(): SharedPreferences
 }

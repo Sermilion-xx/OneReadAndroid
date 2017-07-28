@@ -5,6 +5,7 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import net.oneread.oneread.data.model.Article
+import net.oneread.oneread.data.model.LoginResponse
 import net.oneread.oneread.data.model.RegResponse
 import net.oneread.oneread.data.remote.OneReadService
 import javax.inject.Inject
@@ -28,6 +29,12 @@ class DataManager @Inject constructor(private val oneReadService: OneReadService
                  ilang: String): Observable<RegResponse> {
         return oneReadService.register(email, password, username, name, ilang)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    fun login(email: String, password: String): Observable<LoginResponse> {
+        return oneReadService.login(email, password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
     }
 }
