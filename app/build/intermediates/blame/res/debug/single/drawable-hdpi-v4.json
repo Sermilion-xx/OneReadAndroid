@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_scrubber_track_mtrl_alpha.9.png",
-        "source": "/Users/Sermilion/.android/build-cache/9be2a02c796215bc19e9c0f34b9d4b69a78e9995/output/res/drawable-hdpi-v4/abc_scrubber_track_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_list_selector_disabled_holo_light.9.png",
         "source": "/Users/Sermilion/.android/build-cache/9be2a02c796215bc19e9c0f34b9d4b69a78e9995/output/res/drawable-hdpi-v4/abc_list_selector_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_scrubber_track_mtrl_alpha.9.png",
+        "source": "/Users/Sermilion/.android/build-cache/9be2a02c796215bc19e9c0f34b9d4b69a78e9995/output/res/drawable-hdpi-v4/abc_scrubber_track_mtrl_alpha.9.png"
     },
     {
         "merged": "/Users/Sermilion/Documents/Development/Projects/Production/Android/InProgress/OneRead/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png",

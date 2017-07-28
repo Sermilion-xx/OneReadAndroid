@@ -21,16 +21,19 @@ data class RegResponse(val email: String,
                        val updated_at: String,
                        val created_at: String)
 
-data class LoginResponse(val id: Int,
-                         val name: String,
-                         val email: String,
-                         val username: String,
-                         val avatar: String,
-                         val ilang: String,
-                         val clang: List<String>,
-                         val counter: Int,
-                         val updated_at: String,
-                         val created_at: String,
-                         val token: String,
+data class LoginResponse(val data: LoginData,
                          val status: Int)
+
+data class LoginData(val id: Int,
+                val name: String,
+                val email: String,
+                val username: String,
+                val avatar: String,
+                val ilang: String,
+                val clang: List<String>,
+                val counter: Int,
+                val updated_at: String,
+                val created_at: String,
+                val token: String)
+
 

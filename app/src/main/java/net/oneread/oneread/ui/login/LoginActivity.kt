@@ -42,8 +42,6 @@ class LoginActivity : BaseActivity(), LoginContract.View {
         subscribeChanges()
     }
 
-
-
     @OnClick(R.id.register, R.id.login, R.id.forgot_password)
     fun handleClicks(view: View) {
         when (view.id) {

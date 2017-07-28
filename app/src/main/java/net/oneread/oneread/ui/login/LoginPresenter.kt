@@ -40,7 +40,7 @@ constructor(private val dataManager: DataManager,
             }
 
             override fun onNext(value: LoginResponse) {
-                sharedPreferences.edit().putString(TOKEN, value.token).apply()
+                sharedPreferences.edit().putString(TOKEN, value.data.token).apply()
                 view.showSuccess()
             }
 
