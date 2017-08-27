@@ -12,13 +12,15 @@
     <string name="next">Next</string>
     <string name="back_to_login">Back To Login</string>
     <string name="description_input_fields_errors">Describes input fields errors</string>
-    <string name="error_email">Invalid imail</string>
-    <string name="error_username">Invalid username</string>
-    <string name="error_password">Invalid passsword</string>
-    <string name="error_password_mismatch">Passwords do not match</string>
     <string name="registration_success">You have successfully registred</string>
-    <string name="error_unknown">An unknown error occurred</string>
     <string name="login">Login</string>
     <string name="new_user_q">New user?</string>
     <string name="forgot_password_q">Forgot password?</string>
+
+    <string name="error_unknown">An unknown error occurred.</string>
+    <string name="error_login_server">Error connecting to server. Please try again later.</string>
+    <string name="error_email_format">Invalid email format</string>
+    <string name="error_username">Invalid username</string>
+    <string name="error_password_format">Invalid password format</string>
+    <string name="error_password_mismatch">Passwords do not match</string>
 </resources>

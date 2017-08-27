@@ -1,6 +1,7 @@
 package net.oneread.oneread.ui.login
 
-import net.oneread.oneread.ui.base.BasePresenter
+import android.content.Context
+import net.oneread.oneread.ui.base.BaseMvpPresenter
 import net.oneread.oneread.ui.base.MvpView
 
 /**
@@ -15,13 +16,14 @@ import net.oneread.oneread.ui.base.MvpView
 class LoginContract {
 
     interface View: MvpView {
-        fun showSuccess()
-        fun showFail(error: String?)
+        fun onLoginSuccess()
+        fun onLoginFail(error: String)
         fun showProgress()
         fun hideProgress()
+        fun getContext(): Context
     }
 
-    abstract class Presenter: BasePresenter<View>() {
+    abstract class MvpPresenter : BaseMvpPresenter<View>() {
         abstract fun login(email: String, password: String)
     }
 

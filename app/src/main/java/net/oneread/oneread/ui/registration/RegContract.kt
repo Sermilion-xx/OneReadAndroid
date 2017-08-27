@@ -1,7 +1,6 @@
 package net.oneread.oneread.ui.registration
 
-import net.oneread.oneread.data.model.Article
-import net.oneread.oneread.ui.base.BasePresenter
+import net.oneread.oneread.ui.base.BaseMvpPresenter
 import net.oneread.oneread.ui.base.MvpView
 
 /**
@@ -22,7 +21,7 @@ object RegContract {
         fun hideProgress()
     }
 
-    abstract class Presenter: BasePresenter<View>() {
+    abstract class MvpPresenter : BaseMvpPresenter<View>() {
         abstract fun register(username: String,
                               email: String,
                               password: String,

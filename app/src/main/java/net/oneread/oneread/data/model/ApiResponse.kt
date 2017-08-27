@@ -22,7 +22,8 @@ data class RegResponse(val email: String,
                        val created_at: String)
 
 data class LoginResponse(val data: LoginData,
-                         val status: Int)
+                         val status: Int,
+                         val error: String)
 
 data class LoginData(val id: Int,
                 val name: String,

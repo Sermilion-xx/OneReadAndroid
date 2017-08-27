@@ -24,7 +24,7 @@ import javax.inject.Inject
 @ConfigPersistent
 class RegPresenter
 @Inject
-constructor(private val dataManager: DataManager, @ApplicationContext private val context: Context) : RegContract.Presenter() {
+constructor(private val dataManager: DataManager, @ApplicationContext private val context: Context) : RegContract.MvpPresenter() {
 
     private var disposable: Disposable? = null
 

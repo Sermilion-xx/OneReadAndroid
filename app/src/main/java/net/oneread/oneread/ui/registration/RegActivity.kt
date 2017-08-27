@@ -16,6 +16,7 @@ import net.oneread.oneread.ui.base.BaseActivity
 import net.oneread.oneread.ui.login.LoginActivity
 import net.oneread.oneread.util.extension.validateEmail
 import net.oneread.oneread.util.extension.validatePassword
+import net.oneread.oneread.util.extension.validateUsername
 import org.jetbrains.anko.toast
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -48,18 +49,18 @@ class RegActivity : BaseActivity(), RegContract.View {
 
                 RxTextView.textChanges(vUsername).skip(1).doOnNext {
                     val username = vUsername.text.toString()
-                    if (username.isEmpty() || username.length < 3 || username.length > 20)
+                    if (!validateUsername(username))
                         vUsername.error = getString(R.string.error_username)
                 }.sample(1, TimeUnit.SECONDS).subscribe(),
 
                 RxTextView.textChanges(vEmail).skip(1).doOnNext {
                     if (!validateEmail(vEmail.text.toString()))
-                        vEmail.error = getString(R.string.error_email)
+                        vEmail.error = getString(R.string.error_email_format)
                 }.sample(1, TimeUnit.SECONDS).subscribe(),
 
                 RxTextView.textChanges(vPassword).skip(1).doOnNext {
                     if (!validatePassword(vPassword.text.toString()))
-                        vPassword.error = getString(R.string.error_password)
+                        vPassword.error = getString(R.string.error_password_format)
                 }.sample(1, TimeUnit.SECONDS).subscribe(),
 
                 RxTextView.textChanges(vPasswordAgain).skip(1).doOnNext {

@@ -16,3 +16,8 @@ fun validateEmail(email: String)
 
 fun validatePassword(password: String)
         = password.matches(Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+\$"))
+
+fun validateUsername(username: String): Boolean {
+    return !username.isEmpty() && username.length > 3 && username.length < 20
+
+}
