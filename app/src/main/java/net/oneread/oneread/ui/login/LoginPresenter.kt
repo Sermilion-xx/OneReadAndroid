@@ -23,6 +23,8 @@ class LoginPresenter
 constructor(private val dataManager: DataManager,
             private val sharedPreferences: SharedPreferences) : LoginContract.Presenter() {
 
+    private lateinit var disposable: Disposable
+
     override fun login(email: String, password: String) {
         dataManager.login(email, password).subscribe(object : Observer<LoginResponse> {
 
@@ -35,7 +37,8 @@ constructor(private val dataManager: DataManager,
                 view.showFail(e.message)
             }
 
-            override fun onSubscribe(d: Disposable?) {
+            override fun onSubscribe(d: Disposable) {
+                disposable = d
                 view.showProgress()
             }
 
@@ -43,8 +46,12 @@ constructor(private val dataManager: DataManager,
                 sharedPreferences.edit().putString(TOKEN, value.data.token).apply()
                 view.showSuccess()
             }
-
         })
+    }
+
+    override fun detachView() {
+        disposable.dispose()
+        super.detachView()
     }
 
     companion object {

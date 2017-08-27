@@ -33,6 +33,17 @@ android {
 //        }
 //    }
 
+    productFlavors {
+        standard {
+            applicationId "net.oneread.oneread"
+        }
+
+        api21 {
+            applicationId "net.oneread.oneread"
+            minSdkVersion 21
+        }
+    }
+
     buildTypes {
         release {
 //            signingConfig signingConfigs.release
@@ -86,6 +97,7 @@ dependencies {
 
     final ESPRESSO_VERSION = '2.2.1'
     final RUNNER_VERSION = '0.4'
+    final android_state_version = '1.1.0'
 
 
     def daggerCompiler = "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
@@ -162,6 +174,9 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'org.robolectric:robolectric:3.1.4'
     provided 'org.glassfish:javax.annotation:10.0-b28'
+
+    kapt "com.evernote:android-state-processor:$android_state_version"
+    compile "com.evernote:android-state:$android_state_version"
 }
 
 kapt {

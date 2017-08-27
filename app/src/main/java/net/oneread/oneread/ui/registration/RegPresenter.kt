@@ -26,6 +26,8 @@ class RegPresenter
 @Inject
 constructor(private val dataManager: DataManager, @ApplicationContext private val context: Context) : RegContract.Presenter() {
 
+    private lateinit var disposable: Disposable
+
     override fun register(username: String,
                           email: String,
                           password: String,
@@ -47,7 +49,8 @@ constructor(private val dataManager: DataManager, @ApplicationContext private va
                         view.showSuccess()
                     }
 
-                    override fun onSubscribe(d: Disposable?) {
+                    override fun onSubscribe(d: Disposable) {
+                        disposable = d
                         view.showProgress()
                     }
 
@@ -62,6 +65,11 @@ constructor(private val dataManager: DataManager, @ApplicationContext private va
                         view.hideProgress()
                     }
                 })
+    }
+
+    override fun detachView() {
+        disposable.dispose()
+        super.detachView()
     }
 
 }
