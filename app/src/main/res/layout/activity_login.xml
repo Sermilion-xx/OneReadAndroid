@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="net.oneread.oneread.ui.registration.RegActivity">
+    android:orientation="vertical">
 
     <FrameLayout
         android:id="@+id/footer_top"
         android:layout_width="match_parent"
         android:layout_height="46dp"
+        android:layout_weight="0"
         android:background="@color/colorPrimary">
 
         <ImageView
@@ -22,106 +20,122 @@
 
     </FrameLayout>
 
-    <LinearLayout
-        android:id="@+id/content"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/footer_bottom"
-        android:layout_below="@+id/footer_top"
-        android:background="@color/activityBackground"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_weight="1">
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/email"
-            style="@style/oneEditText_1"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/regLogMarginSidesSmall"
-            android:layout_marginStart="@dimen/regLogMarginSidesSmall"
-            android:hint="@string/email"
-            app:backgroundTint="@color/colorAccent" />
+            android:layout_gravity="center">
+
+            <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:id="@+id/content"
+                tools:context="net.oneread.oneread.ui.registration.RegActivity">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/email"
+                    style="@style/oneEditText_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/regLogMarginSidesSmall"
+                    android:layout_marginStart="@dimen/regLogMarginSidesSmall"
+                    android:hint="@string/email"
+                    app:backgroundTint="@color/colorAccent" />
 
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/password"
-            style="@style/oneEditText_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/regLogMarginSidesSmall"
-            android:layout_marginStart="@dimen/regLogMarginSidesSmall"
-            android:layout_marginTop="@dimen/regLogMarginTop"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            app:backgroundTint="@color/colorAccent" />
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/password"
+                    style="@style/oneEditText_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/regLogMarginSidesSmall"
+                    android:layout_marginStart="@dimen/regLogMarginSidesSmall"
+                    android:layout_marginTop="@dimen/regLogMarginTop"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    app:backgroundTint="@color/colorAccent" />
 
-        <Button
-            android:id="@+id/login"
-            android:layout_width="125dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/regLogMarginTop"
-            android:background="@drawable/btn_round_white_blue_background"
-            android:text="@string/login"
-            android:textAllCaps="false"
-            android:textColor="@color/colorPrimary"
-            android:textSize="18sp" />
+                <Button
+                    android:id="@+id/login"
+                    android:layout_width="125dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/regLogMarginTop"
+                    android:background="@drawable/btn_round_white_blue_background"
+                    android:text="@string/login"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
-    </LinearLayout>
 
-    <RelativeLayout
+        </FrameLayout>
+
+    </ScrollView>
+
+    <FrameLayout
         android:id="@+id/footer_bottom"
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/register"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="start|center"
-            android:maxLength="30"
-            android:paddingEnd="5dp"
-            android:paddingStart="5dp"
-            android:text="@string/new_user_q"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite"
-            android:textSize="14sp"
-            android:maxWidth="150dp"/>
+        android:orientation="horizontal"
+        android:layout_gravity="bottom">
 
         <Button
             android:id="@+id/forgot_password"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_gravity="end"
             android:layout_marginEnd="10dp"
             android:background="?attr/selectableItemBackground"
+            android:ellipsize="end"
             android:gravity="end|center"
-            android:maxWidth="150dp"
             android:maxLength="30"
+            android:maxWidth="150dp"
             android:paddingEnd="5dp"
             android:paddingStart="5dp"
-            android:ellipsize="end"
             android:text="@string/forgot_password_q"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="14sp" />
 
-    </RelativeLayout>
+        <Button
+            android:id="@+id/register"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="10dp"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="start|center"
+            android:maxLength="30"
+            android:maxWidth="150dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
+            android:text="@string/new_user_q"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp" />
+
+    </FrameLayout>
 
     <include
         android:id="@+id/progressBar"
-        layout="@layout/progress_bar" />
+        layout="@layout/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+</LinearLayout>
 
 
-</RelativeLayout>
 
 
