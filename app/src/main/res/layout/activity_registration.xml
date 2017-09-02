@@ -1,129 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="net.oneread.oneread.ui.registration.RegActivity">
-
-    <FrameLayout
-        android:id="@+id/footer_top"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:background="@color/colorPrimary">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_oneread" />
-
-    </FrameLayout>
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/footer_bottom"
-        android:layout_below="@+id/footer_top"
-        android:background="@color/activityBackground"
-        android:gravity="center"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/username"
-            style="@style/oneEditText_1"
+        <include
+            android:id="@+id/footer_top"
+            layout="@layout/footer_view_top" />
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/regLogMarginSidesSmall"
-            android:layout_marginStart="@dimen/regLogMarginSidesSmall"
-            android:hint="@string/username"
-            app:backgroundTint="@color/colorAccent" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/activityBackground">
+
+            <LinearLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/username"
+                    style="@style/oneEditText_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/regLogMarginSidesSmall"
+                    android:layout_marginStart="@dimen/regLogMarginSidesSmall"
+                    android:hint="@string/username"
+                    app:backgroundTint="@color/colorAccent" />
 
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/email"
-            style="@style/oneEditText_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/regLogMarginSidesSmall"
-            android:layout_marginStart="@dimen/regLogMarginSidesSmall"
-            android:layout_marginTop="@dimen/regLogMarginTop"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            app:backgroundTint="@color/colorAccent" />
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/email"
+                    style="@style/oneEditText_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/regLogMarginSidesSmall"
+                    android:layout_marginStart="@dimen/regLogMarginSidesSmall"
+                    android:layout_marginTop="@dimen/regLogMarginTop"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    app:backgroundTint="@color/colorAccent" />
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/password"
-            style="@style/oneEditText_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/regLogMarginSidesSmall"
-            android:layout_marginStart="@dimen/regLogMarginSidesSmall"
-            android:layout_marginTop="@dimen/regLogMarginTop"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            app:backgroundTint="@color/colorAccent" />
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/password"
+                    style="@style/oneEditText_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/regLogMarginSidesSmall"
+                    android:layout_marginStart="@dimen/regLogMarginSidesSmall"
+                    android:layout_marginTop="@dimen/regLogMarginTop"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    app:backgroundTint="@color/colorAccent" />
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/password_again"
-            style="@style/oneEditText_1"
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/password_again"
+                    style="@style/oneEditText_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/regLogMarginSidesSmall"
+                    android:layout_marginStart="@dimen/regLogMarginSidesSmall"
+                    android:layout_marginTop="@dimen/regLogMarginTop"
+                    android:hint="@string/password_confirm"
+                    android:inputType="textPassword"
+                    app:backgroundTint="@color/colorAccent" />
+
+                <Button
+                    android:id="@+id/reg_next"
+                    android:layout_width="125dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/regLogMarginTop"
+                    android:background="@drawable/btn_round_white_blue_background"
+                    android:text="@string/next"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <FrameLayout
+            android:id="@+id/footer_bottom"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/regLogMarginSidesSmall"
-            android:layout_marginStart="@dimen/regLogMarginSidesSmall"
-            android:layout_marginTop="@dimen/regLogMarginTop"
-            android:hint="@string/password_confirm"
-            android:inputType="textPassword"
-            app:backgroundTint="@color/colorAccent" />
+            android:layout_height="46dp"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal">
 
             <Button
-                android:layout_marginTop="@dimen/regLogMarginTop"
-                android:id="@+id/reg_next"
-                android:layout_width="125dp"
-                android:layout_height="40dp"
-                android:text="@string/next"
-                android:layout_gravity="center"
+                android:id="@+id/login"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="start|center"
+                android:maxLength="30"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
+                android:text="@string/back_to_login"
                 android:textAllCaps="false"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
-                android:background="@drawable/btn_round_white_blue_background"/>
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp" />
 
+        </FrameLayout>
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/footer_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="start|center"
-            android:maxLength="30"
-            android:textAllCaps="false"
-            android:paddingEnd="5dp"
-            android:paddingStart="5dp"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:text="@string/back_to_login"
-            android:textColor="@color/colorWhite"
-            android:textSize="14sp" />
-
-    </RelativeLayout>
-
     <include
         android:id="@+id/progressBar"
-        layout="@layout/progress_bar" />
+        layout="@layout/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
 
-</RelativeLayout>
+</FrameLayout>

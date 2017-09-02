@@ -1,43 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/footer_top"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:layout_weight="0"
-        android:background="@color/colorPrimary">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_oneread" />
+        <include
+            android:id="@+id/footer_top"
+            layout="@layout/footer_view_top" />
 
-    </FrameLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-
-        <FrameLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/activityBackground">
+
 
             <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:orientation="vertical"
                 android:id="@+id/content"
-                tools:context="net.oneread.oneread.ui.registration.RegActivity">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/email"
@@ -76,56 +63,56 @@
             </LinearLayout>
 
 
+        </ScrollView>
+
+        <FrameLayout
+            android:id="@+id/footer_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_gravity="bottom"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/forgot_password"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:background="?attr/selectableItemBackground"
+                android:ellipsize="end"
+                android:gravity="end|center"
+                android:maxLength="30"
+                android:maxWidth="150dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
+                android:text="@string/forgot_password_q"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/register"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="start|center"
+                android:maxLength="30"
+                android:maxWidth="150dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
+                android:text="@string/new_user_q"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp" />
+
         </FrameLayout>
 
-    </ScrollView>
-
-    <FrameLayout
-        android:id="@+id/footer_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal"
-        android:layout_gravity="bottom">
-
-        <Button
-            android:id="@+id/forgot_password"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="10dp"
-            android:background="?attr/selectableItemBackground"
-            android:ellipsize="end"
-            android:gravity="end|center"
-            android:maxLength="30"
-            android:maxWidth="150dp"
-            android:paddingEnd="5dp"
-            android:paddingStart="5dp"
-            android:text="@string/forgot_password_q"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite"
-            android:textSize="14sp" />
-
-        <Button
-            android:id="@+id/register"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="10dp"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="start|center"
-            android:maxLength="30"
-            android:maxWidth="150dp"
-            android:paddingEnd="5dp"
-            android:paddingStart="5dp"
-            android:text="@string/new_user_q"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite"
-            android:textSize="14sp" />
-
-    </FrameLayout>
+    </LinearLayout>
 
     <include
         android:id="@+id/progressBar"
@@ -134,7 +121,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
-</LinearLayout>
+</FrameLayout>
+
+
 
 
 

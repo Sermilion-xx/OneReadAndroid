@@ -39,14 +39,13 @@ constructor(private val dataManager: DataManager,
 
             override fun onError(e: Throwable) {
                 view.hideProgress()
-                val message:String
-                when(e) {
-                    is SocketTimeoutException -> message = getString(R.string.error_login_server)
+                val message = when(e) {
+                    is SocketTimeoutException -> getString(R.string.error_login_server)
                     is HttpException -> {
                         val response = Gson().fromJson(e.response().errorBody().string(), LoginResponse::class.java)
-                        message = response.error
+                        response.error
                     }
-                    else -> message = getString(R.string.error_unknown)
+                    else -> getString(R.string.error_unknown)
                 }
                 view.onLoginFail(message)
             }
