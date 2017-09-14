@@ -1,15 +1,24 @@
 package net.oneread.oneread.ui.login
 
+import android.accounts.Account
+import android.accounts.AccountManager
 import android.content.SharedPreferences
+import android.os.Bundle
 import com.google.gson.Gson
 import io.reactivex.Observer
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import net.oneread.oneread.R
 import net.oneread.oneread.data.DataManager
-import net.oneread.oneread.data.model.LoginResponse
+import net.oneread.oneread.data.model.api.LoginResponse
 import net.oneread.oneread.injection.ConfigPersistent
+import net.oneread.oneread.onereadauth.account.AccountAuthenticator
+import net.oneread.oneread.onereadauth.account.AccountUtil
+import net.oneread.oneread.onereadauth.account.SessionManager
+import net.oneread.oneread.onereadauth.models.Scope
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
+import java.util.concurrent.CompletableFuture
 import javax.inject.Inject
 
 /**
@@ -28,7 +37,7 @@ class LoginPresenter
 constructor(private val dataManager: DataManager,
             private val sharedPreferences: SharedPreferences) : LoginContract.MvpPresenter() {
 
-    private var disposable: Disposable? = null
+    private var disposables: CompositeDisposable = CompositeDisposable()
 
     override fun login(email: String, password: String) {
         dataManager.login(email, password).subscribe(object : Observer<LoginResponse> {
@@ -38,20 +47,45 @@ constructor(private val dataManager: DataManager,
             }
 
             override fun onError(e: Throwable) {
-                view.hideProgress()
-                val message = when(e) {
-                    is SocketTimeoutException -> getString(R.string.error_login_server)
-                    is HttpException -> {
-                        val response = Gson().fromJson(e.response().errorBody().string(), LoginResponse::class.java)
-                        response.error
-                    }
-                    else -> getString(R.string.error_unknown)
-                }
-                view.onLoginFail(message)
+                processError(e)
             }
 
             override fun onSubscribe(d: Disposable) {
-                disposable = d
+                disposables.add(d)
+                view.showProgress()
+            }
+
+            override fun onNext(value: LoginResponse) {
+                val accountManager = AccountManager.get(view.getContext())
+                val account = Account(email, AccountUtil.ACCOUNT_TYPE)
+                accountManager.addAccountExplicitly(
+                        account,
+                        null,
+                        null
+                )
+                accountManager.setAuthToken(
+                        account,
+                        Scope.ALL_SCOPE.toString(),
+                        value.data.token
+                )
+                view.onLoginSuccess()
+            }
+        })
+    }
+
+    override fun loginAnonymous(grant_type: String, device_id: String) {
+        dataManager.loginAnonimous(grant_type, device_id).subscribe(object : Observer<LoginResponse> {
+
+            override fun onComplete() {
+                view.hideProgress()
+            }
+
+            override fun onError(e: Throwable) {
+                processError(e)
+            }
+
+            override fun onSubscribe(d: Disposable) {
+                disposables.add(d)
                 view.showProgress()
             }
 
@@ -62,8 +96,21 @@ constructor(private val dataManager: DataManager,
         })
     }
 
+    private fun processError(e: Throwable) {
+        view.hideProgress()
+        val message = when (e) {
+            is SocketTimeoutException -> getString(R.string.error_login_server)
+            is HttpException -> {
+                val response = Gson().fromJson(e.response().errorBody().string(), LoginResponse::class.java)
+                response.error
+            }
+            else -> getString(R.string.error_unknown)
+        }
+        view.onLoginFail(message)
+    }
+
     override fun detachView() {
-        disposable?.dispose()
+        disposables.dispose()
         super.detachView()
     }
 
@@ -71,8 +118,6 @@ constructor(private val dataManager: DataManager,
         val TOKEN = "token"
     }
 
-    fun getString(string: Int): String {
-        return view.getContext().getString(string)
-    }
+    fun getString(string: Int): String = view.getContext().getString(string)
 
 }

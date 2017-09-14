@@ -5,22 +5,19 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import net.oneread.oneread.data.model.Article
-import net.oneread.oneread.data.model.LoginResponse
-import net.oneread.oneread.data.model.RegResponse
+import net.oneread.oneread.data.model.api.LoginResponse
+import net.oneread.oneread.data.model.api.RegResponse
 import net.oneread.oneread.data.remote.OneReadService
+import java.util.concurrent.CompletableFuture
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class DataManager @Inject constructor(private val oneReadService: OneReadService) {
 
-    fun getSpotlight(): Observable<MutableList<Article>> {
-        return oneReadService.getSpotlight()
-    }
+    fun getSpotlight(): Observable<MutableList<Article>> = oneReadService.getSpotlight()
 
-    fun saveToBookmarks(items: Article): Observable<Article> {
-        return oneReadService.saveToBookmarks(items)
-    }
+    fun saveToBookmarks(items: Article): Observable<Article> = oneReadService.saveToBookmarks(items)
 
     fun register(email: String,
                  password: String,
@@ -34,6 +31,15 @@ class DataManager @Inject constructor(private val oneReadService: OneReadService
 
     fun login(email: String, password: String): Observable<LoginResponse> {
         return oneReadService.login(email, password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    fun loginSync(email: String, password: String): LoginResponse =
+            oneReadService.loginSync(email, password)
+
+    fun loginAnonimous(grant_type: String, device_id: String): Observable<LoginResponse> {
+        return oneReadService.loginAnonimous(grant_type, device_id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }

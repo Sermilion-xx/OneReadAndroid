@@ -25,6 +25,10 @@ import javax.inject.Inject
 
 class RegActivity : BaseActivity(), RegContract.View {
 
+    override fun getLayoutId(): Int {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     @Inject lateinit var presenter: RegPresenter
 
     @BindView(R.id.username) lateinit var vUsername: EditText

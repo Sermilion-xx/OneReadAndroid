@@ -1,5 +1,6 @@
 package net.oneread.oneread.ui.base
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.annotation.Nullable
@@ -24,17 +25,21 @@ import net.oneread.oneread.injection.component.ConfigPersistentComponent
 import net.oneread.oneread.injection.component.DaggerConfigPersistentComponent
 import net.oneread.oneread.injection.module.ActivityModule
 import org.jetbrains.anko.find
+import timber.log.Timber
 import java.util.*
 import java.util.concurrent.atomic.AtomicLong
 
 
-open class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
     companion object {
         @JvmStatic private val KEY_ACTIVITY_ID = "KEY_ACTIVITY_ID"
         @JvmStatic private val NEXT_ID = AtomicLong(0)
         @JvmStatic private val componentsMap = HashMap<Long, ConfigPersistentComponent>()
     }
+
+    private lateinit var mBackPressedListeners: MutableList<OnBackPressedListener>
+    abstract fun getLayoutId(): Int
 
     @BindView(R.id.progressBar) @Nullable
     lateinit var mProgress: ProgressBar
@@ -44,8 +49,8 @@ open class BaseActivity : AppCompatActivity() {
     lateinit var mDrawer: DrawerLayout
     @BindView(R.id.navigation_view) @Nullable
     lateinit var navigationView: NavigationView
-    protected var mDrawerAdapter: DrawerAdapter? = null
-    protected var mActionBarDrawerToggle: ActionBarDrawerToggle? = null
+    private var mDrawerAdapter: DrawerAdapter? = null
+    private var mActionBarDrawerToggle: ActionBarDrawerToggle? = null
 
     private var activityId: Long = 0
     lateinit var activityComponent: ActivityComponent
@@ -54,6 +59,10 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(getLayoutId())
+        mToolbar = find(R.id.toolbar)
+        setSupportActionBar(mToolbar)
+        mBackPressedListeners = mutableListOf()
         initDI(savedInstanceState)
     }
 
@@ -81,6 +90,24 @@ open class BaseActivity : AppCompatActivity() {
             componentsMap.remove(activityId)
         }
         super.onDestroy()
+    }
+
+    override fun onBackPressed() {
+        var consumed = false
+
+        // if any listener consumes the event, we don't call super
+        for (listener in mBackPressedListeners) {
+            Timber.d("onbackpressed " + listener.javaClass.getName())
+            if (listener.onBackPressed()) {
+                consumed = true
+            }
+        }
+
+        if (!consumed) {
+            Timber.d("super onbackpressed")
+            super.onBackPressed()
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        }
     }
 
     protected fun setupToolbar(title: String, vararg homeAsUpIndicator: Int): Toolbar? {
@@ -145,4 +172,32 @@ open class BaseActivity : AppCompatActivity() {
     fun hideProgress() {
         mProgress.visibility = View.GONE
     }
+
+    interface OnBackPressedListener {
+        /**
+         * Called when back is pressed. Return true is back pressed event is consumed.
+         *
+         * @return Event consumed.
+         */
+        fun onBackPressed(): Boolean
+    }
+
+    fun registerOnBackPressedListener(listener: OnBackPressedListener) {
+        mBackPressedListeners.add(listener)
+    }
+
+    fun unregisterOnBackPressedListener(listener: OnBackPressedListener) {
+        mBackPressedListeners.remove(listener)
+    }
+
+    override fun startActivity(intent: Intent) {
+        super.startActivity(intent)
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+    }
+
 }

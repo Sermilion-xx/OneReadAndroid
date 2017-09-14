@@ -33,9 +33,7 @@ open class OneReadApplication : Application() {
     }
 
     companion object {
-        private lateinit var INSTANCE: OneReadApplication
-        fun getInstance(): OneReadApplication {
-            return INSTANCE
-        }
+        lateinit var INSTANCE: OneReadApplication
+        private set
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OneRead</string>
+
 
     <string name="drawer_open">open</string>
     <string name="drawer_closed">closed</string>
@@ -23,4 +23,6 @@
     <string name="error_username">Invalid username</string>
     <string name="error_password_format">Invalid password format</string>
     <string name="error_password_mismatch">Passwords do not match</string>
+    <string name="access_revoked">Access for \"%1$s\" has been revoked. Removing accountOneRead and logging out</string>
+    <string name="user_agent">OneRead/Version %1$s/Build %2$s/Android %3$s</string>
 </resources>

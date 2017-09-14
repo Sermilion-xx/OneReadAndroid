@@ -10,7 +10,7 @@ package net.oneread.oneread.data.model
   ---------------------------------------------------
  ) */
 
-class DrawerItem(val profileUrl: String?, val rowIcon: Int, val textOne: String?) {
+class DrawerItem(val profileUrl: String?, val rowIcon: Int, val textOne: String?): Item {
 
     private constructor(profileUrl: String?, textOne: String?) : this(profileUrl, -1, textOne)
     private constructor(rowItemIcon: Int, textOne: String?) : this("", rowItemIcon, textOne)

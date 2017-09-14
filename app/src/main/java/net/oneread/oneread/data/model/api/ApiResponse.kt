@@ -1,4 +1,4 @@
-package net.oneread.oneread.data.model
+package net.oneread.oneread.data.model.api
 
 /**
  * ---------------------------------------------------

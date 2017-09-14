@@ -33,14 +33,39 @@ android {
 //        }
 //    }
 
+    flavorDimensions "default"
+
     productFlavors {
-        standard {
+
+        finalProduct {
+            dimension "default"
             applicationId "net.oneread.oneread"
+            resValue "string", "app_name", "OneRead"
+        }
+
+        demoProduct {
+            dimension "default"
+            applicationId "net.oneread.oneread.demo"
+            resValue "string", "app_name", "OneRead Demo"
+        }
+
+        demoTesting {
+            dimension "default"
+            applicationId "net.oneread.oneread.demotesting"
+            resValue "string", "app_name", "OneRead Demo Testing"
+        }
+
+        mock {
+            dimension "default"
+            applicationId "net.oneread.oneread.mock"
+            resValue "string", "app_name", "OneRead Mock"
         }
 
         api21 {
+            dimension "default"
             applicationId "net.oneread.oneread"
             minSdkVersion 21
+            resValue "string", "app_name", "OneRead Api21"
         }
     }
 
@@ -83,6 +108,10 @@ android {
 repositories {
     mavenCentral()
     maven { url 'https://jitpack.io' }
+}
+
+configurations.all {
+    resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
 }
 
 dependencies {
@@ -132,7 +161,6 @@ dependencies {
 
     compile "io.reactivex.rxjava2:rxandroid:$RXJAVA_VERSION"
     compile "io.reactivex.rxjava2:rxjava:$RXJAVA_VERSION"
-    compile 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.0.0'
 
     // Unit tests dependencies
     testCompile jUnit
@@ -161,6 +189,11 @@ dependencies {
     androidTestCompile "com.android.support.test:runner:$RUNNER_VERSION"
     androidTestCompile "com.android.support.test:rules:$RUNNER_VERSION"
 
+
+    kapt "com.evernote:android-state-processor:$android_state_version"
+    compile "com.evernote:android-state:$android_state_version"
+
+    compile 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.0.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     compile 'org.jetbrains.anko:anko:0.10.1'
     compile 'com.jakewharton.timber:timber:4.4.0'
@@ -172,11 +205,11 @@ dependencies {
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
     compile 'com.tubb.smrv:swipemenu-recyclerview:5.4.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.bluelinelabs:conductor-support:2.1.4'
+    compile 'com.bluelinelabs:conductor-rxlifecycle2:2.1.4'
+    compile 'com.bluelinelabs:conductor-autodispose:2.1.4'
     testCompile 'org.robolectric:robolectric:3.1.4'
     provided 'org.glassfish:javax.annotation:10.0-b28'
-
-    kapt "com.evernote:android-state-processor:$android_state_version"
-    compile "com.evernote:android-state:$android_state_version"
 }
 
 kapt {

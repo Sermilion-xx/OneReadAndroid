@@ -12,15 +12,11 @@ open class ActivityModule(protected val activity: Activity) {
 
     @Provides
     @PerActivity
-    internal fun provideActivity(): Activity {
-        return activity
-    }
+    internal fun provideActivity(): Activity = activity
 
     @Provides
     @PerActivity
     @ActivityContext
-    internal fun providesContext(): Context {
-        return activity
-    }
+    internal fun providesContext(): Context = activity
 
 }

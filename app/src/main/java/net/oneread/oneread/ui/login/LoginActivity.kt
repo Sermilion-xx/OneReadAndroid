@@ -1,5 +1,6 @@
 package net.oneread.oneread.ui.login
 
+import android.accounts.AccountAuthenticatorActivity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -22,7 +23,15 @@ import net.oneread.oneread.util.extension.validatePassword
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class LoginActivity : BaseActivity(), LoginContract.View {
+class LoginActivity :  AccountAuthenticatorActivity(), LoginContract.View {
+
+    override fun showProgress() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun hideProgress() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     @State var loginAttempted = false
 
@@ -41,15 +50,13 @@ class LoginActivity : BaseActivity(), LoginContract.View {
         Snackbar.make(vContentView, error, Snackbar.LENGTH_LONG).show()
     }
 
-    override fun getContext(): Context {
-        return this
-    }
+    override fun getContext(): Context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         StateSaver.restoreInstanceState(this, savedInstanceState)
         setContentView(R.layout.activity_login)
-        activityComponent.inject(this)
+//        activityComponent.inject(this)
         ButterKnife.bind(this)
         presenter.attachView(this)
         subscribeChanges()
@@ -105,6 +112,8 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     companion object {
+
+        val EXTRA_REGISTRATION = "net.oneread.registration"
         fun createIntent(context: Context): Intent {
             return Intent(context, LoginActivity::class.java)
         }

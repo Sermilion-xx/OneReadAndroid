@@ -12,9 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.registration.RegActivity"
-            android:windowSoftInputMode="adjustResize|"/>
-        <activity android:name=".ui.login.LoginActivity"
+        <activity
+            android:name=".ui.registration.RegActivity"
+            android:windowSoftInputMode="adjustResize|" />
+        <activity
+            android:name=".ui.login.LoginActivity"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +24,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.MainActivity"></activity>
+
+        <service
+            android:name=".onereadauth.accountOneRead.AccountAuthenticatorService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+
     </application>
 
 </manifest>

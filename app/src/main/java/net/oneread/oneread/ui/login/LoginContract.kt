@@ -3,6 +3,7 @@ package net.oneread.oneread.ui.login
 import android.content.Context
 import net.oneread.oneread.ui.base.BaseMvpPresenter
 import net.oneread.oneread.ui.base.MvpView
+import java.util.concurrent.CompletableFuture
 
 /**
  * ---------------------------------------------------
@@ -25,6 +26,7 @@ class LoginContract {
 
     abstract class MvpPresenter : BaseMvpPresenter<View>() {
         abstract fun login(email: String, password: String)
+        abstract fun loginAnonymous(grant_type: String, device_id: String)
     }
 
 }

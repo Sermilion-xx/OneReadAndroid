@@ -9,10 +9,9 @@ package net.oneread.oneread.data.model
  * <a href="http://www.github.com/sermilion>github</a>
  * ---------------------------------------------------
  */
-data class Article(val id: Int,
-                   val title: String,
+data class Article(val title: String,
                    val text: String,
                    val blog: String,
                    val time: String,
                    val saved: Boolean,
-                   val tags: List<String>)
+                   val tags: List<String>): BaseItem()

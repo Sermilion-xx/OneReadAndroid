@@ -6,7 +6,7 @@ import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import net.oneread.oneread.R
 import net.oneread.oneread.data.DataManager
-import net.oneread.oneread.data.model.RegResponse
+import net.oneread.oneread.data.model.api.RegResponse
 import net.oneread.oneread.injection.ApplicationContext
 import net.oneread.oneread.injection.ConfigPersistent
 import retrofit2.HttpException

@@ -9,6 +9,7 @@ import dagger.Component
 import net.oneread.oneread.data.DataManager
 import net.oneread.oneread.data.remote.OneReadService
 import net.oneread.oneread.injection.ApplicationContext
+import net.oneread.oneread.onereadauth.account.AccountAuthenticator
 import javax.inject.Singleton
 
 @Singleton
@@ -21,4 +22,6 @@ interface ApplicationComponent {
     fun oneAccountService(): OneReadService
     fun dataManager(): DataManager
     fun sharedPreferences(): SharedPreferences
+
+    fun inject(aa: AccountAuthenticator)
 }
