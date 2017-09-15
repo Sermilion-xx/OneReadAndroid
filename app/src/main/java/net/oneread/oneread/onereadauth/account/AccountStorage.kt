@@ -8,6 +8,7 @@ import java.lang.reflect.Type
 
 /**
  * Created by sermilion on 9/10/17.
+ * Cache system for storing account. Also stores it in SharedPreferences
  */
 class AccountStorage private constructor(context: Context) : BasePersistentStorage<ORAccount>(context) {
 

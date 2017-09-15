@@ -25,7 +25,7 @@ abstract class BasePersistentStorage<T>(mContext: Context) {
                 getName(),
                 Context.MODE_PRIVATE
         )
-        mGson = JsonUtil.getDefaultGson()
+        mGson = JsonUtil.defaultGson
     }
 
     fun put(key: String, value: T) {

@@ -13,27 +13,29 @@ class OneReadSettings private constructor(context: Context) {
 
     companion object {
         private val TAG = OneReadSettings::class.java.simpleName
-        private val PREF_DEVICE_HAS_SOFTWARE_KEYS = "net.oneread.onereadandroid.device_has_software_keys"
+        private val PREF_DEVICE_HAS_SOFT_NAV_BAR = "net.oneread.onereadandroid.device_has_software_keys"
         private val PREF_CTX_FRONTPAGE_SETTINGS_USER = "net.oneread.onereadandroid.settings.%s"
         private val ANONYMOUS_USERNAME = "anonymous"
-        private var instance: OneReadSettings? = null
-    }
+        private var INSTANCE: OneReadSettings? = null
 
-    private var username: String? = null
-    private var sharedPrefs: SharedPreferences
+        private var username: String? = null
+        private lateinit var sharedPrefs: SharedPreferences
 
-    fun getInstance(): OneReadSettings {
-        val activeSession = SessionManager.INSTANCE.getActiveSession()
-        val currentUser = if (activeSession != null && activeSession.isAnonymous())
-            ANONYMOUS_USERNAME
-        else
-            activeSession?.email
-        if (!TextUtils.equals(username, currentUser) || instance == null) {
-            username = currentUser
-            instance = OneReadSettings(OneReadApplication.INSTANCE)
+
+        fun getInstance(): OneReadSettings {
+            val activeSession = SessionManager.INSTANCE.getActiveSession()
+            val currentUser = if (activeSession != null && activeSession.isAnonymous())
+                ANONYMOUS_USERNAME
+            else
+                activeSession?.email
+            if (!TextUtils.equals(username, currentUser) || INSTANCE == null) {
+                username = currentUser
+                INSTANCE = OneReadSettings(OneReadApplication.INSTANCE)
+            }
+            return INSTANCE as OneReadSettings
         }
-        return instance as OneReadSettings
     }
+
 
     init {
         sharedPrefs = context.getSharedPreferences(
@@ -41,4 +43,16 @@ class OneReadSettings private constructor(context: Context) {
                 Context.MODE_PRIVATE
         )
     }
+
+    fun hasSoftNavBar(): Boolean {
+        return sharedPrefs.getBoolean(PREF_DEVICE_HAS_SOFT_NAV_BAR, true)
+    }
+
+    fun setHasSoftNavBar(deviceHasSoftwareKeys: Boolean) {
+        sharedPrefs
+                .edit()
+                .putBoolean(PREF_DEVICE_HAS_SOFT_NAV_BAR, deviceHasSoftwareKeys)
+                .apply()
+    }
+
 }

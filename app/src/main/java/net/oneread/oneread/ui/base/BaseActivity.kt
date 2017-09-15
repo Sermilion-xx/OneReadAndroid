@@ -72,7 +72,6 @@ abstract class BaseActivity : AppCompatActivity() {
             val component = (applicationContext as OneReadApplication).applicationComponent
 
             DaggerConfigPersistentComponent.builder()
-                    //depends on ApplicationComponent, so set it
                     .applicationComponent(component)
                     .build()
         })
